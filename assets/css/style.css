@@ -17,14 +17,14 @@ body{
     height: 100vh;
     display: grid;
     place-items: center;
-    margin: 0 1rem;
+    margin: 0 1.5rem;
 }
 
 .battery-card{
     position: relative;
     border-radius: 1.2rem;
     padding: 1.5rem 2rem;
-    width: 100%;
+    width: 300px;
     height: 240px;
     background-color: #171717;
     display: grid;
@@ -61,7 +61,7 @@ body{
     box-shadow: inset 20px 0 50px hsl(0, 0%, 16%),
                 inset -4px 12px 50px hsl(0, 0%, 50%);
     border-radius: 3rem;
-    justify-content: flex-end;
+    justify-self: flex-end;
 }
 
 .battery-level{
@@ -77,7 +77,7 @@ body{
     left: 0;
     right: 0;
     height: 36px;
-    background-image: linear-gradient(90deg, rgba(237,114,124,1) 5%, rgba(224,9,33,1) 95%);
+    background-image: linear-gradient(90deg, rgba(237,114,124,1) 15%, rgba(224,9,33,1) 100%);
     box-shadow: inset -10px 0 12px hsla(0, 0%, 0%, .1),
                 inset 12px 0 12px   hsla(0, 0%, 0%, .15);
 
@@ -88,6 +88,94 @@ body{
     content: "";
     position: absolute;
     height: 8px;
-      
+    box-shadow: inset 0 -3px 6px hsla(0, 0%, 0%, .2);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: -4px;
+    border-radius: 50%;
 }
 
+.green-color{
+    background-color: rgb(59, 230, 59);
+}
+
+.animated-green{
+    background-color: rgb(59, 230, 59);
+    animation: chargin-battery 1.2s infinite alternate;
+}
+
+.animated-red{
+    background-color: rgb(235, 82, 94);
+    animation: low-battery 1.2s infinite alternate;
+}
+
+.animated-green,.animated-red,.green-color{
+            background-clip: border-box;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+@keyframes chargin-battery{
+    0%{
+        text-shadow: none;
+    }
+    100%{
+        text-shadow: 0 0 8px #a9f764;
+    }
+}
+
+@keyframes low-battery {
+    0%{
+        text-shadow: none;
+    }
+    100%{
+        text-shadow: 0 0 8px rgb(235, 82, 94);
+    }
+}
+
+.gradient-color-red,
+.gradient-color-red::after{
+    background: linear-gradient(90deg,
+    rgba(237,114,124,1) 15%,
+    rgba(224,9,33,1) 100%);
+}
+
+.gradient-color-orange,
+.gradient-color-orange::after{
+    background: linear-gradient(90deg, 
+    hsl(22, 89%, 46%) 15%,
+    hsl(54, 90%, 45%) 100%);
+}
+
+.gradient-color-yellow,
+.gradient-color-yellow::after{
+    background: linear-gradient(90deg, 
+    hsl(54, 89%, 46%) 15%,
+    hsl(92, 90%, 45%) 100%);
+}
+
+.gradient-color-green,
+.gradient-color-green::after{
+    background: linear-gradient(90deg, 
+    hsl(92, 89%, 46%) 15%,
+    hsl(92, 90%, 68%) 100%);
+}
+
+@media screen and (max-width:320px){
+    .battery-card{
+        zoom: .8;
+    }
+}
+
+@media screen and (min-widht: 430px) {
+    .battery-card{
+        width: 315px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .battery-card{
+        zoom: 1.5;
+    }
+}
